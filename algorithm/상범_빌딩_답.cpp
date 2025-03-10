@@ -1,8 +1,6 @@
 #include <algorithm>
 #include <iostream>
 #include <queue>
-
-#define endl "\n"
 #define M 30
 using namespace std;
 
@@ -15,8 +13,8 @@ struct N { // Node
 };
 
 int l, r, c;
-char m[M][M][M];
-bool visited[M][M][M];
+char m[M][M][M];       // map
+bool visited[M][M][M]; // visited
 
 P s, e;
 
@@ -30,7 +28,7 @@ void initialize() {
   fill(&visited[0][0][0], &visited[0][0][0] + M * M * M, false);
 }
 
-// 입력 함수
+// 입력 함수 S E
 void input() {
   cin >> l >> r >> c;
   if (l == 0 && r == 0 && c == 0)
@@ -49,7 +47,6 @@ void input() {
     }
   }
 }
-
 // BFS 탐색 함수
 int bfs(P start) {
   auto [sf, sx, sy] = start;
@@ -58,7 +55,7 @@ int bfs(P start) {
   visited[sf][sx][sy] = true;
 
   while (!q.empty()) {
-    auto [cf, cx, cy, cnt] = q.front(); // 구조적 바인딩 적용
+    auto [cf, cx, cy, cnt] = q.front();
     q.pop();
 
     if (cf == e.f && cx == e.x && cy == e.y) {
@@ -69,26 +66,29 @@ int bfs(P start) {
       int nf = cf + df[i];
       int nx = cx + dx[i];
       int ny = cy + dy[i];
-
-      if (nf >= 0 && nf < l && nx >= 0 && nx < r && ny >= 0 && ny < c) {
-        if (m[nf][nx][ny] != '#' && !visited[nf][nx][ny]) {
-          visited[nf][nx][ny] = true;
-          q.push({nf, nx, ny, cnt + 1});
-        }
+      // l r c
+      if (nf < 0 || nf >= l || nx < 0 || nx >= r || ny < 0 || ny >= c) {
+        continue;
       }
+
+      if (m[nf][nx][ny] == '#' || visited[nf][nx][ny]) {
+        continue;
+      }
+
+      visited[nf][nx][ny] = true;
+      q.push({nf, nx, ny, cnt + 1});
     }
   }
   return -1;
 }
-
 // Solution 함수 (결과 출력)
 void Solution() {
   int result = bfs(s);
 
   if (result == -1)
-    cout << "Trapped!" << endl;
+    cout << "Trapped!" << "\n";
   else
-    cout << "Escaped in " << result << " minute(s)." << endl;
+    cout << "Escaped in " << result << " minute(s)." << "\n";
 }
 
 // Solve 함수 (전체 과정 반복)
