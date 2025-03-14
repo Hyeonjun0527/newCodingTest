@@ -1,0 +1,1 @@
+{"name":"Local: x의n제곱구하기(분할정복)","url":"c:\\newCodingTest_2025\\3_1_data_structure\\2_2_재귀\\x의n제곱구하기(분할정복).c","tests":[{"id":1741845604313,"input":"2 5","output":"32"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\newCodingTest_2025\\3_1_data_structure\\2_2_재귀\\x의n제곱구하기(분할정복).c","group":"local","local":true}

@@ -4,7 +4,7 @@
 #include <algorithm>
 using namespace std;
 vector<vector<int>> adj_list;
-vector<int> visited;
+vector<bool> visited;
 void dfs(int v) {
     if (visited[v]) return;
     visited[v] = true;

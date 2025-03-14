@@ -1,8 +1,6 @@
 #include <algorithm>
 #include <iostream>
 #include <queue>
-
-#define endl "\n"
 #define M 30
 using namespace std;
 
