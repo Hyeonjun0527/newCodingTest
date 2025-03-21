@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\ProblemSolving_my_payground.dir/objects.a
+C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ar.exe qc CMakeFiles\ProblemSolving_my_payground.dir/objects.a @CMakeFiles\ProblemSolving_my_payground.dir\objects1.rsp
+C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE -O2 -g -DNDEBUG -Wl,--whole-archive CMakeFiles\ProblemSolving_my_payground.dir/objects.a -Wl,--no-whole-archive -o ProblemSolving_my_payground.exe -Wl,--out-implib,libProblemSolving_my_payground.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\ProblemSolving_my_payground.dir\linkLibs.rsp

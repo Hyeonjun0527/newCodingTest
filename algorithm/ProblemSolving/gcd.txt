@@ -1,0 +1,34 @@
+// GCD를 구하는 유클리드 호제법 함수
+// O(log(min(a, b)))**로 동일합니다.
+int gcd(int a, int b) {
+    if (b == 0) return a;
+    return gcd(b, a % b);
+}
+
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+int gcd(int a, int b) {
+    for (; b != 0; ) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+//for문의 초기식은 for,while문밖에 있는 초기식과 반복에서 논리적으로 같다고 보면 됌
+//단지 스코프가 다를 뿐이야.
+//그리고 증감식은 for,while문의 가장 아래에 있는 것과 논리적으로 같아.
+int gcd(int a, int b) {
+    for (int temp; b != 0; a = temp) {
+        temp = b;
+        b = a % b;
+    }
+    return a;
+}

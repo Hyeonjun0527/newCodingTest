@@ -1,0 +1,1 @@
+{"name":"Local: 53clear","url":"c:\\newCodingTest\\algorithm\\ProblemSolving2\\Topological_sort\\53clear.cpp","tests":[{"id":1742560499100,"input":"3 2\n1 3\n2 3","output":"1 2 3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\newCodingTest\\algorithm\\ProblemSolving2\\Topological_sort\\53clear.cpp","group":"local","local":true}

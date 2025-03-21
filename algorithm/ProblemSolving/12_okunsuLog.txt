@@ -1,0 +1,77 @@
+#include <iostream>
+#include <vector>
+#include <stack>
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int N;
+    cin >> N;
+    vector<int> A(N, 0);
+    vector<int> ans(N, 0);
+
+    // 수열 A 입력 받기
+    for (int i = 0; i < N; i++) {
+        cin >> A[i];
+    }
+
+    stack<int> myStack;
+
+    // 첫 번째 인덱스 0을 스택에 push
+    myStack.push(0);
+    cout << "초기 스택 상태: [0]" << endl;
+
+    // 오큰수 찾기 로직
+    for (int i = 1; i < N; i++) {
+        cout << "현재 수열 값 A[" << i << "] = " << A[i] << " 에 대해 작업 시작" << endl;
+
+        // 스택이 비어있지 않고, 현재 수열 값이 스택의 top 인덱스가 가리키는 값보다 크면
+        while (!myStack.empty() && A[myStack.top()] < A[i]) {
+            cout << "  A[" << myStack.top() << "] = " << A[myStack.top()] << " < A[" << i << "] = " << A[i] << endl;
+            ans[myStack.top()] = A[i];  // 오큰수 결정
+            cout << "  ans[" << myStack.top() << "] = " << A[i] << " (오큰수 저장)" << endl;
+            myStack.pop();  // 스택에서 인덱스 제거
+            cout << "  스택 팝, 현재 스택 상태: [";
+            stack<int> tempStack = myStack;  // 스택의 상태를 출력하기 위해 임시 복사본 사용
+            while (!tempStack.empty()) {
+                cout << tempStack.top() << " ";
+                tempStack.pop();
+            }
+            cout << "]" << endl;
+        }
+        // 현재 인덱스 i를 스택에 push
+        myStack.push(i);
+        cout << "현재 인덱스 " << i << " 스택에 푸시, 현재 스택 상태: [";
+        stack<int> tempStack = myStack;
+        while (!tempStack.empty()) {
+            cout << tempStack.top() << " ";
+            tempStack.pop();
+        }
+        cout << "]" << endl;
+    }
+
+    // 반복문을 다 돌고 나왔는데 스택이 비어있지 않다면 빌 때까지
+    while (!myStack.empty()) {
+        ans[myStack.top()] = -1;
+        cout << "스택 팝, 더 큰 수 없음 -> ans[" << myStack.top() << "] = -1" << endl;
+        myStack.pop();
+        cout << "현재 스택 상태: [";
+        stack<int> tempStack = myStack;
+        while (!tempStack.empty()) {
+            cout << tempStack.top() << " ";
+            tempStack.pop();
+        }
+        cout << "]" << endl;
+    };
+
+    // 정답 배열 출력
+    cout << "최종 정답 배열: ";
+    for (int i = 0; i < N; i++) {
+        cout << ans[i] << " ";
+    }
+    cout << endl;
+}

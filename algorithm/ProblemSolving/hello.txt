@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// 소인수를 찾는 함수
+vector<long> findPrimeFactors(long n) {
+    vector<long> primeFactors;
+    for (long k = 2; k * k <= n; ++k) {
+        if (n % k == 0) {
+            primeFactors.push_back(k);
+            while (n % k == 0) {
+                n /= k;
+            }
+        }
+    }
+    if (n > 1) {
+        primeFactors.push_back(n); // 마지막 남은 소인수 처리
+    }
+    return primeFactors;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    long N;
+    cin >> N;
+    long result = N;
+
+    // 소인수들을 먼저 찾음
+    vector<long> primeFactors = findPrimeFactors(N);
+
+    // 소인수들에 대해서만 반복문 수행
+    for (long p : primeFactors) {
+        result -= result / p;
+    }
+
+    cout << result << "\n";
+}
