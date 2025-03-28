@@ -1,5 +1,7 @@
 {
   "prettier.bracketSameLine": true,
+  "C_Cpp.clang_format_style": "file",
+  "editor.formatOnSave": true,
   "files.associations": {
     "iostream": "cpp",
     "vector": "cpp",

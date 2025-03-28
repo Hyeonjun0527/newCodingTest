@@ -1,0 +1,6 @@
+Language: Cpp
+BreakBeforeBraces: Attach
+SpaceBeforeParens: ControlStatements
+AllowShortFunctionsOnASingleLine: None
+IndentWidth: 4
+UseTab: Never
