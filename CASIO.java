@@ -1,11 +1,12 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CASIO{
+public class CASIO {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        // 반복문, 제어문 if, 배열 , 링크드리스트
     }
 }
 /*
