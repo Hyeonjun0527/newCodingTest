@@ -22,7 +22,6 @@ string infixToPostfix(string expr) {
         if (isdigit(c) || isalpha(c)) {
             // 숫자나 문자(피연산자)는 결과 문자열에 바로 추가
             result += c;
-            result += ' '; // 다음 토큰과 구분하기 위해 공백 추가
         } else if (c == '(') {
             // 여는 괄호는 무조건 스택에 push
             opStack.push(c);
@@ -30,7 +29,6 @@ string infixToPostfix(string expr) {
             // 닫는 괄호가 나오면 여는 괄호를 만날 때까지 연산자 pop
             while (!opStack.empty() && opStack.top() != '(') {
                 result += opStack.top();
-                result += ' ';
                 opStack.pop();
             }
             if (!opStack.empty())
@@ -39,9 +37,9 @@ string infixToPostfix(string expr) {
             // 연산자일 경우 우선순위 비교
             while (!opStack.empty() &&
                    precedence(opStack.top()) >= precedence(c)) {
-                // 스택 위의 연산자 우선순위가 같거나 높으면 pop하여 출력
+                // 스택 위에꺼(top) vs 현재꺼(c)
+                //  스택 위의 연산자 우선순위가 같거나 높으면 pop하여 출력
                 result += opStack.top();
-                result += ' ';
                 opStack.pop();
             }
             // 현재 연산자를 스택에 push
@@ -52,7 +50,6 @@ string infixToPostfix(string expr) {
     // 수식이 끝난 후, 스택에 남은 연산자를 모두 결과에 추가
     while (!opStack.empty()) {
         result += opStack.top();
-        result += ' ';
         opStack.pop();
     }
 

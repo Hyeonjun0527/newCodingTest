@@ -1,0 +1,1 @@
+{"name":"Local: 중위후위변환알고리즘","url":"c:\\newCodingTest\\3_1_data_structure\\6_스택\\중위후위변환알고리즘.c","tests":[{"id":1744611738304,"input":"(2+3)*4+9","output":"23+4*9+"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\newCodingTest\\3_1_data_structure\\6_스택\\중위후위변환알고리즘.c","group":"local","local":true}
