@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 
+    tbody에 relative를 주면
+    thead의 absolute 위치 기준이 tbody가 됩니다.
+    즉, thead가 tbody를 기준으로 움직입니다.
+    이 경우, tbody가 스크롤로 움직이면 thead도 함께 따라 움직이게 됩니다.
+
+    table에 relative를 주면
+    thead의 위치 기준이 table 전체가 됩니다.
+    이 경우, tbody는 스크롤되더라도 table 자체는 움직이지 않으므로, thead는 table에 고정된 상태로 그대로 머물게 됩니다.
+    따라서 스크롤을 움직여도 thead가 항상 고정되어 보입니다.
+    -->
+    <style>
+        * {
+            border : 0px;
+            padding : 0px;
+            margin : 0px;
+        }
+        #div1 {
+            margin : 100px;
+            width: 770px;
+            height : 300px;
+            border : 2px inset red;
+            overflow-y : scroll;
+        }
+        /* #table1 thead {
+            position:absolute;
+            z-index: 100;
+            top: 0;
+            left : 0;
+        } */
+
+        /* abolute한게 스크롤과
+        함께 움직이도록 할 수 있는거네
+        relative를 움직이게 함으로서 
+         
+        스티키는 스크롤에 영향을 안주게 하는 거고
+        relative absolute는 스크롤에 영향을 안주게 하는건 불가능하지만 
+        스크롤과 같이 움직이게 하는 걸 역발상한거네
+         */
+        #table1 thead>tr>th {
+            width : 120px;
+            height : 50px;
+        }
+        #table1 {
+            /* position:relative; */
+        }
+        tbody {
+            position:relative;
+        }
+        thead {
+            position:absolute;
+            z-index:100;
+        }
+        #table1 thead>tr>th.thh {
+            border : 2px inset black;
+            text-align : center;
+            background-color: gray;
+            color : white;
+            /* position : sticky;
+            top : 0px; */
+        }
+        tbody>tr>td{
+            width : 120px;
+            height : 50px;
+            border : 2px inset black;
+            text-align : center;
+        }
+        tbody>tr:nth-child(2n+1) {
+            background-color: orange;
+            color:black;
+        }
+        tbody>tr>td:nth-child(n+2):hover {
+            background-color: yellow;
+            color: black;
+            font-weight : bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+    <table id="table1">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="thh">월</th>
+                <th class="thh">화</th>
+                <th class="thh">수</th>
+                <th class="thh">목</th>
+                <th class="thh">금</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1교시</td>
+                <td>국어</td>
+                <td>컴퓨터</td>
+                <td>국어</td>
+                <td>국어</td>
+                <td>바생</td>
+            </tr>
+            <tr>
+                <td>2교시</td>
+                <td>창의</td>
+                <td rowspan="2">한자</td>
+                <td>컴퓨터</td>
+                <td>창의</td>
+                <td>수학</td>
+            </tr>
+            <tr>
+                <td>3교시</td>
+                <td>국어</td>
+                <td>체육</td>
+                <td>수학</td>
+                <td>창의</td>
+            </tr>
+            <tr>
+                <td>4교시</td>
+                <td>영어</td>
+                <td>컴퓨터</td>
+                <td>체육</td>
+                <td>바생</td>
+                <td>과학</td>
+            </tr>
+            <tr>
+                <td>5교시</td>
+                <td colspan="5">점심</td>
+            </tr>
+            <tr>
+                <td>6교시</td>
+                <td>한자</td>
+                <td>바생</td>
+                <td>과학</td>
+                <td>국어</td>
+                <td>수학</td>
+            </tr>
+            <tr>
+                <td>7교시</td>
+                <td>국어</td>
+                <td>한자</td>
+                <td>국어</td>
+                <td>과학</td>
+                <td>과학</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

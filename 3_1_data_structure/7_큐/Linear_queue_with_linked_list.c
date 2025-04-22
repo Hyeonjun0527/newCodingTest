@@ -5,7 +5,7 @@
 typedef int element; // 요소의타입
 typedef struct {     // 큐의노드의타입
     element data;
-    struct QueueNode *link;
+    struct QueueNode *next;
 } QueueNode;
 typedef struct { // 큐 전체의정보를저장하는타입
     QueueNode *front;
@@ -27,7 +27,7 @@ void free_queue(LinkedQueueType *q) {
     QueueNode *cur = q->front;
     while (cur != NULL) {
         temp = cur;      // temp로 똑같이 가르키네?
-        cur = cur->link; // 다음으로 이동하네?
+        cur = cur->next; // 다음으로 이동하네?
         free(temp);      // temp를 이용해서 free
     }
     free(q);
@@ -44,7 +44,7 @@ bool is_empty(LinkedQueueType *q) {
 }
 void print_queue(LinkedQueueType *q) {
     printf("Queue: ");
-    for (QueueNode *p = q->front; p != NULL; p = p->link) {
+    for (QueueNode *p = q->front; p != NULL; p = p->next) {
         printf(" %d | ", p->data);
     }
     printf("\n");
@@ -53,12 +53,12 @@ void print_queue(LinkedQueueType *q) {
 void enqueue(LinkedQueueType *q, element data) {
     QueueNode *temp = (QueueNode *)malloc(sizeof(QueueNode));
     temp->data = data; // 데이터저장
-    temp->link = NULL; // 링크필드를NULL
+    temp->next = NULL; // 링크필드를NULL
     if (is_empty(q)) { // 큐가공백이면
         q->front = temp;
         q->rear = temp;
     } else {                  // 큐가공백이아니면
-        q->rear->link = temp; // 먼저 새로운 놈과 기존 놈을 연결해야지
+        q->rear->next = temp; // 먼저 새로운 놈과 기존 놈을 연결해야지
         q->rear = temp;       // 연결하고 나서 손가락을 옮겨야지.
     }
 }
@@ -82,7 +82,7 @@ element dequeue(LinkedQueueType *q) {
     }
     // data = temp->data;
     element data = q->front->data; // 데이터를 꺼낸다.
-    q->front = q->front->link;     // front의 다음 노드
+    q->front = q->front->next;     // front의 다음 노드
 
     if (q->front == NULL) // 큐가 비었다면
         q->rear = NULL;   // 다른데 가르키던 rear도 초기화 해줘야지.

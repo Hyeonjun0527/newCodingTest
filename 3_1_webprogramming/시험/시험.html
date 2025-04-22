@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding : 0px;
+            margin : 0px;
+            border : 0px;
+        }
+        #form {
+            width:450px;
+            height:350px;
+            background-color: rgb(189, 189, 189);
+            margin : 50px;
+        }
+        #form input[type="text"],select,button {
+            width : 350px;
+        }
+        #form input[name="gender"] {
+            border : "5px";
+        }
+        #form input[type="text"],select,button{
+            border-radius: 5px;
+            margin-bottom : 20px;
+            margin-left : 50px;
+            margin-right : 50px;
+        }
+        #form p {
+            margin-left : 50px;
+        }
+        #form input#man {
+            margin-left : 0px;
+        }
+        div#gender {
+            margin-bottom:20px;
+        }
+        input#man[type="radio"] {
+            border-radius: 5px;
+            margin-left : 50px;
+        }
+        #gender {
+            border : 2px inset black;
+            border-radius : 5px;
+        }
+        #form label.marginleft {
+            margin-left : 50px;
+            margin-right : 50px;
+        }
+        #gender {
+            margin-left : 50px;
+            margin-right : 50px;
+        }
+        #button1 {
+            background-color: green;
+            cursor: pointer;
+        }
+        #form label[for="name"] {
+            margin-top:25px;
+        }
+        #top {
+            height : 25px;
+        }
+        #form label[for="man"] {
+            margin-right : 10px;
+        }
+        input,select,button {
+            border: 2px inset black;
+        }
+        #form input#man {
+            margin-left : 5px !important;
+        }
+    </style>
+</head>
+<body>
+    <form id="form" action="/action_page.php" method="GET">
+        <div id="top"></div>
+        <label for="name" class="marginleft">이름</label>
+        <br/>
+        <input type="text" name="name" id="name">
+        <br/>
+        <label for="sid" class="marginleft">학번</label>
+        <input type="text" name="sid" id="sid">
+            <p>성별</p>
+            <div id="gender">
+            <input name="gender" value="man" type="radio" id="man">
+            <label for="man">남자</label>
+            <input name="gender" value="woman" type="radio" id="woman">
+            <label for="woman">여자</label>
+        </div>
+        <p>전공</p>
+        <select name="major">
+            <optgroup label="IT대학">
+                <option value="1">컴퓨터공학과</option>
+                <option value="2">전기전자공학과</option>
+            </optgroup>
+            <optgroup label="자연과학대학">
+                <option value="3">물리학과</option>
+                <option value="4">생명공학과</option>
+            </optgroup>
+        </select>
+        <br/>
+        <button id="button1" type="submit">제출하기</button>
+    </form>
+</body>
+</html>

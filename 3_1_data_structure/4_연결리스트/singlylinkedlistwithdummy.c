@@ -2,12 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX_LIST_SIZE 1000
-typedef int element;      // 항목의정의
-typedef struct ListNode { // 리스트노드 정의
+typedef int element; // 항목의정의
+typedef struct {     // 리스트노드 정의
     element data;
     struct ListNode *next;
 } ListNode;
-typedef struct LinkedListType {
+typedef struct {
     ListNode *head; // 리스트헤드포인터
     int size;       // 현재리스트에저장된항목들의개수
 } LinkedListType;
@@ -21,19 +21,15 @@ LinkedListType create_list() {
 // 리스트출력(데이터가없는경우에도잘출력되도록구현)
 void print_list(LinkedListType *L) {
     printf("LinkedList(%d) [", L->size);
-    if (L->head == NULL) {
-        printf("]\n");
-        return;
+    if (L->head != NULL) {
+        // 전체리스트순회
+        ListNode *cur = L->head;
+        while (cur->next != NULL) {
+            printf("%d, ", cur->data);
+            cur = cur->next;
+        }
+        printf("%d", cur->data);
     }
-
-    // 전체리스트순회
-    ListNode *cur = L->head;
-    while (cur->next != NULL) { //, 때문에 마지막요소를 따로 처리 할거야.
-        printf("%d, ", cur->data);
-        cur = cur->next;
-    }
-    printf("%d", cur->data);
-
     printf("]\n");
 }
 
@@ -46,7 +42,7 @@ bool is_full(LinkedListType *L) {
     return L->size == MAX_LIST_SIZE;
 }
 // 현재리스트의아이템개수를반환
-int get_length(LinkedListType *L) {
+bool get_length(LinkedListType *L) {
     return L->size;
 }
 // 오류처리함수
@@ -58,7 +54,6 @@ void error(const char *message) {
 element get_entry(LinkedListType *L, int pos) {
     if (pos < 0 || pos > L->size)
         error("Wrong position");
-
     ListNode *cur = L->head;
     for (int i = 0; i < pos; i++) {
         cur = cur->next;
@@ -68,7 +63,7 @@ element get_entry(LinkedListType *L, int pos) {
 // 전체 메모리 해제
 // 현재 포인터저장. 다음 포인터이동. 그리고 현재를 삭제하면 돼. 현재가
 // NULL일때까지 반복
-void clear(LinkedListType *L) {
+element clear(LinkedListType *L) {
     ListNode *cur = L->head;
     ListNode *temp;
     while (cur != NULL) {
@@ -80,21 +75,19 @@ void clear(LinkedListType *L) {
     L->size = 0;
     // free(L)하면 리스트 자체가 삭제되어버림.
 }
-// 누구가르킬지 value는 어케할지
-ListNode *create_node(ListNode *next, element value) {
+ListNode *create_node(element value, ListNode *next) {
     ListNode *p = (ListNode *)malloc(sizeof(ListNode));
     p->data = value;
     p->next = next;
     return p;
 }
-
 void insert_front(LinkedListType *L, element value) {
-    L->head = create_node(L->head, value);
+    L->head = create_node(value, L->head);
     L->size++;
 }
 
 void insert_last(LinkedListType *L, element value) {
-    ListNode *p = create_node(NULL, value);
+    ListNode *p = create_node(value, NULL);
 
     if (L->head == NULL) {
         L->head = p;
@@ -115,13 +108,13 @@ void insert(LinkedListType *L, int pos, element value) {
         return;
     }
     if (pos == 0) {
-        L->head = create_node(L->head, value);
+        L->head = create_node(value, L->head);
     } else {
         ListNode *cur = L->head;
         for (int i = 0; i < pos - 1; i++) {
             cur = cur->next;
         }
-        cur->next = create_node(cur->next, value);
+        cur->next = create_node(value, cur->next);
     }
     L->size++;
 }

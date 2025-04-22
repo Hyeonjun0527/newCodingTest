@@ -5,7 +5,7 @@
 typedef int element;      // 항목의정의
 typedef struct ListNode { // 리스트노드 정의
     element data;
-    struct ListNode *link;
+    struct ListNode *next;
 } ListNode;
 typedef struct LinkedListType {
     ListNode *head; // 리스트헤드포인터
@@ -24,9 +24,9 @@ void print_list(LinkedListType *L) {
     if (L->head != NULL) {
         // 전체리스트순회
         ListNode *cur = L->head;
-        while (cur->link != NULL) {
+        while (cur->next != NULL) {
             printf("%d, ", cur->data);
-            cur = cur->link;
+            cur = cur->next;
         }
         printf("%d", cur->data);
     }
@@ -37,9 +37,9 @@ void print_list2(LinkedListType *L) {
         // 전체리스트순회
         ListNode *cur = L->head;
         int k = 1;
-        while (cur->link != NULL) {
+        while (cur->next != NULL) {
             printf("%d", cur->data);
-            cur = cur->link;
+            cur = cur->next;
             if (L->size - 1 >= k) {
                 printf("->");
             }
@@ -59,7 +59,7 @@ void error(const char *message) {
 ListNode *create_node(element value, ListNode *link) {
     ListNode *p = (ListNode *)malloc(sizeof(ListNode));
     p->data = value;
-    p->link = link;
+    p->next = link;
     return p;
 }
 void insert_last(LinkedListType *L, element value) {
@@ -69,11 +69,11 @@ void insert_last(LinkedListType *L, element value) {
         L->head = p;
     } else {
         ListNode *cur = L->head;
-        while (cur->link != NULL) {
-            cur = cur->link;
+        while (cur->next != NULL) {
+            cur = cur->next;
         }
         // while문이 끝나면 cur->link == NULL이야. 그래서
-        cur->link = p;
+        cur->next = p;
     }
     L->size++;
 }
@@ -81,7 +81,7 @@ void insert_last(LinkedListType *L, element value) {
 int find__(LinkedListType *L, int value) {
     ListNode *cur = L->head;
     while (cur != NULL && cur->data != value) {
-        cur = cur->link;
+        cur = cur->next;
     }
     if (cur == NULL) {
         error("리스트에 값이 존재하지 않습니다.");
@@ -97,11 +97,11 @@ ListNode *copy_nodes(ListNode *head) {
         return NULL;
     ListNode *new_head = create_node(head->data, NULL);
     ListNode *current = new_head;
-    head = head->link;
+    head = head->next;
     while (head != NULL) {
-        current->link = create_node(head->data, NULL);
-        current = current->link;
-        head = head->link;
+        current->next = create_node(head->data, NULL);
+        current = current->next;
+        head = head->next;
     }
     return new_head;
 }
@@ -114,10 +114,10 @@ LinkedListType union_list(LinkedListType L1, LinkedListType L2) {
     if (cur == NULL) {
         L3.head = copy_nodes(L2.head);
     } else {
-        while (cur->link != NULL) {
-            cur = cur->link;
+        while (cur->next != NULL) {
+            cur = cur->next;
         }
-        cur->link = copy_nodes(L2.head);
+        cur->next = copy_nodes(L2.head);
     }
 
     L3.size = L1.size + L2.size;
@@ -133,7 +133,7 @@ LinkedListType reverse_list(LinkedListType L) {
 
     while (cur != NULL) {
         insert_front(&rev, cur->data);
-        cur = cur->link;
+        cur = cur->next;
     }
     return rev;
 }

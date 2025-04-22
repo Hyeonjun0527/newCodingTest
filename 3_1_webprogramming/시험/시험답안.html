@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      * {
+        border: 0px;
+        padding: 0px;
+        margin: 0px;
+      }
+
+      form {
+        height: 300px;
+        width: 350px;
+        background-color: gainsboro;
+        padding: 25px;
+        padding-left: 50px;
+        padding-right: 50px;
+      }
+
+      .outer {
+        width: 350px;
+        margin-bottom: 20px;
+      }
+
+      #name,
+      #sid,
+      #gender,
+      select,
+      #submit {
+        width: 100%;
+        border: 2px inset black;
+        display: block;
+        border-radius: 5px;
+      }
+
+      #submit {
+        background-color: green;
+        padding: 1px 2px;
+      }
+
+      form input#man {
+        margin-left: 5px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="/action_page.php" method="POST">
+      <div>
+        <div class="outer">
+          <label for="name">이름</label>
+          <input type="text" id="name" name="name">
+        </div>
+        <div class="outer">
+          <label for="sid">학번</label>
+          <input type="text" id="sid" name="sid">
+        </div>
+
+        <div class="outer">
+          <label>성별</label>
+          <div id="gender">
+            <input id="man" type="radio" name="man" value="man">
+            <label for="man">남자</label>
+            <input id="woman" type="radio" name="man" value="woman">
+            <label for="woman">여자</label>
+          </div>
+        </div>
+
+        <div class="outer">
+          <label for="major">전공</label>
+          <select id="major" name="major">
+            <optgroup label="IT대학">
+              <option value="0">컴퓨터공학과</option>
+              <option value="1">전기전자공학과</option>
+            </optgroup>
+            <optgroup label="자연과학대학">
+              <option value="3">물리학과</option>
+              <option value="4">생명공학과</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="outer">
+          <input id="submit" type="submit" value="제출하기">
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            border : 0px;
+            padding : 0px;
+            margin : 0px;
+        }
+        #div1 {
+            margin : 100px;
+            width: 770px;
+            height : 300px;
+            border : 2px inset red;
+            overflow-y : scroll;
+        }
+        /* #table1 thead {
+            position:absolute;
+            z-index: 100;
+            top: 0;
+            left : 0;
+        } */
+        #table1 thead>tr>th {
+            width : 120px;
+            height : 50px;
+        }
+        #table1 thead>tr>th.thh {
+            border : 2px inset black;
+            text-align : center;
+            background-color: gray;
+            color : white;
+            position : sticky;
+            top : 0px;
+        }
+        tbody>tr>td{
+            width : 120px;
+            height : 50px;
+            border : 2px inset black;
+            text-align : center;
+        }
+        tbody>tr:nth-child(2n+1) {
+            background-color: orange;
+            color:black;
+        }
+        tbody>tr>td:nth-child(n+2):hover {
+            background-color: yellow;
+            color: black;
+            font-weight : bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+    <table id="table1">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="thh">월</th>
+                <th class="thh">화</th>
+                <th class="thh">수</th>
+                <th class="thh">목</th>
+                <th class="thh">금</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1교시</td>
+                <td>국어</td>
+                <td>컴퓨터</td>
+                <td>국어</td>
+                <td>국어</td>
+                <td>바생</td>
+            </tr>
+            <tr>
+                <td>2교시</td>
+                <td>창의</td>
+                <td rowspan="2">한자</td>
+                <td>컴퓨터</td>
+                <td>창의</td>
+                <td>수학</td>
+            </tr>
+            <tr>
+                <td>3교시</td>
+                <td>국어</td>
+                <td>체육</td>
+                <td>수학</td>
+                <td>창의</td>
+            </tr>
+            <tr>
+                <td>4교시</td>
+                <td>영어</td>
+                <td>컴퓨터</td>
+                <td>체육</td>
+                <td>바생</td>
+                <td>과학</td>
+            </tr>
+            <tr>
+                <td>5교시</td>
+                <td colspan="5">점심</td>
+            </tr>
+            <tr>
+                <td>6교시</td>
+                <td>한자</td>
+                <td>바생</td>
+                <td>과학</td>
+                <td>국어</td>
+                <td>수학</td>
+            </tr>
+            <tr>
+                <td>7교시</td>
+                <td>국어</td>
+                <td>한자</td>
+                <td>국어</td>
+                <td>과학</td>
+                <td>과학</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

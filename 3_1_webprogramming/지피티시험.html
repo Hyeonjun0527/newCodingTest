@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>학생 정보 입력</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0; /* body의 기본 마진 제거 */
+  }
+
+  .form-container {
+    background-color: #90ee90; /* 이미지와 동일한 연한 녹색 */
+    padding: 30px;
+    border-radius: 8px; /* 약간 둥근 모서리 */
+    width: 350px; /* 폼 너비 */
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333; /* 레이블 글자색 */
+  }
+
+  input[type="text"],
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none; /* 테두리 제거 */
+    border-radius: 4px; /* 입력 필드 모서리 둥글게 */
+    box-sizing: border-box; /* 패딩 포함하여 너비 계산 */
+    background-color: white; /* 입력 필드 배경색 */
+  }
+
+  .gender-options {
+    margin-bottom: 20px;
+    display: flex; /* 라디오 버튼과 레이블 정렬을 위해 flex 사용 */
+    align-items: center; /* 세로 중앙 정렬 */
+  }
+
+  /* 성별 레이블 자체는 block이 아닌 inline으로 유지 */
+  label[for="male"], label[for="female"] {
+      display: inline-block;
+      font-weight: normal; /* 성별 레이블은 보통 굵기 */
+      margin-left: 5px; /* 라디오 버튼과의 간격 */
+      margin-right: 15px; /* 다음 옵션과의 간격 */
+      margin-bottom: 0; /* 아래쪽 마진 제거 */
+  }
+
+  input[type="radio"] {
+    margin: 0; /* 라디오 버튼 기본 마진 제거 */
+    /* 필요하다면 추가 스타일링 */
+  }
+
+
+  button[type="submit"] {
+    background-color: #3cb371; /* 중간 녹색 버튼 */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* 버튼 너비 꽉 채우기 */
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px; /* 전공 선택과의 간격 추가 */
+  }
+
+  button[type="submit"]:hover {
+    background-color: #2e8b57; /* 마우스 올렸을 때 약간 더 진한 녹색 */
+  }
+</style>
+</head>
+<body>
+
+<div class="form-container">
+  <form>
+    <label for="name">이름</label>
+    <input type="text" id="name" name="name">
+
+    <label for="studentId">학번</label>
+    <input type="text" id="studentId" name="studentId">
+
+    <label>성별</label>
+    <div class="gender-options">
+      <input type="radio" id="male" name="gender" value="male">
+      <label for="male">남자</label>
+      <input type="radio" id="female" name="gender" value="female">
+      <label for="female">여자</label>
+    </div>
+
+    <label for="major">전공</label>
+    <select id="major" name="major">
+      <option value="cs">컴퓨터공학과</option>
+      <option value="ee">전자공학과</option>
+      <option value="me">기계공학과</option>
+      {/* 여기에 다른 전공 옵션을 추가할 수 있습니다 */}
+    </select>
+
+    <button type="submit">제출하기</button>
+  </form>
+</div>
+
+</body>
+</html>

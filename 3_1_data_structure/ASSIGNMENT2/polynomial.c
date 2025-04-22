@@ -4,7 +4,7 @@
 typedef struct _TermNode { // 노드타입
     double coef;
     int exp;
-    struct _TermNode *link;
+    struct _TermNode *next;
 } TermNode;
 typedef struct {     // 다항식구조체타입선언
     int size;        // 다항식항의개수
@@ -21,11 +21,11 @@ Polynomial *create_polynomial() {
     return poly;
 }
 // 다항식의한Term을생성
-TermNode *create_term(float coef, int exp, TermNode *link) {
+TermNode *create_term(float coef, int exp, TermNode *next) {
     TermNode *term = (TermNode *)malloc(sizeof(TermNode));
     term->exp = exp;
     term->coef = coef;
-    term->link = link;
+    term->next = next;
     return term;
 }
 // term 추가
@@ -37,18 +37,18 @@ void add_term(Polynomial *poly, float coef, int exp) {
     TermNode *cur = poly->terms;
     while (cur != NULL && cur->exp > exp) {
         prev = cur;
-        cur = cur->link;
+        cur = cur->next;
     }
     TermNode *new_node = create_term(coef, exp, NULL);
 
     // 새항추가
 
     if (prev == NULL) { // 맨 앞에 추가
-        new_node->link = poly->terms;
+        new_node->next = poly->terms;
         poly->terms = new_node;
     } else { // 중간 또는 마지막에 추가
-        new_node->link = cur;
-        prev->link = new_node;
+        new_node->next = cur;
+        prev->next = new_node;
     }
     poly->size++;
     poly->degree = MAX(exp, poly->degree);
@@ -59,7 +59,7 @@ void free_polynomial(Polynomial *poly) {
     TermNode *cur = poly->terms;
     while (cur) {
         temp = cur;
-        cur = cur->link;
+        cur = cur->next;
         free(temp);
     }
     free(poly);
@@ -70,9 +70,9 @@ void print_poly(Polynomial *poly) {
     printf("Poly(%d, %d) = ", poly->degree, poly->size);
     while (cur) {
         printf("%.1fx^%d ", cur->coef, cur->exp);
-        if (cur->link)
+        if (cur->next)
             printf("+ ");
-        cur = cur->link;
+        cur = cur->next;
     }
     printf(";\n");
 }
@@ -83,20 +83,20 @@ Polynomial *poly_add(Polynomial *A, Polynomial *B) {
     while (curA && curB) {
         if (curA->exp > curB->exp) { // a의차수> b의차수
             add_term(poly, curA->coef, curA->exp);
-            curA = curA->link;
+            curA = curA->next;
         } else if (curA->exp < curB->exp) { // a의차수< b의차수
             add_term(poly, curB->coef, curB->exp);
-            curB = curB->link;
+            curB = curB->next;
         } else { // a의차수== b의차수(0인경우는add_term에서처리)
             add_term(poly, curA->coef + curB->coef, curA->exp);
-            curA = curA->link;
-            curB = curB->link;
+            curA = curA->next;
+            curB = curB->next;
         }
     }
     // A나B중의하나가먼저끝나게되면poly로남은항들복사
-    for (; curA != NULL; curA = curA->link)
+    for (; curA != NULL; curA = curA->next)
         add_term(poly, curA->coef, curA->exp);
-    for (; curB != NULL; curB = curB->link)
+    for (; curB != NULL; curB = curB->next)
         add_term(poly, curB->coef, curB->exp);
     return poly;
 }
@@ -107,20 +107,20 @@ Polynomial *poly_sub(Polynomial *A, Polynomial *B) {
     while (curA && curB) {
         if (curA->exp > curB->exp) { // a의차수> b의차수
             add_term(poly, curA->coef, curA->exp);
-            curA = curA->link;
+            curA = curA->next;
         } else if (curA->exp < curB->exp) { // a의차수< b의차수
             add_term(poly, -curB->coef, curB->exp);
-            curB = curB->link;
+            curB = curB->next;
         } else { // a의차수== b의차수(0인경우는add_term에서처리)
             add_term(poly, curA->coef - curB->coef, curA->exp);
-            curA = curA->link;
-            curB = curB->link;
+            curA = curA->next;
+            curB = curB->next;
         }
     }
     // A나B중의하나가먼저끝나게되면poly로남은항들복사
-    for (; curA != NULL; curA = curA->link)
+    for (; curA != NULL; curA = curA->next)
         add_term(poly, curA->coef, curA->exp);
-    for (; curB != NULL; curB = curB->link)
+    for (; curB != NULL; curB = curB->next)
         add_term(poly, -curB->coef, curB->exp);
     return poly;
 }
@@ -135,7 +135,7 @@ Polynomial *derivative(Polynomial *eq) {
         if (before_exp >= 1) {
             add_term(result, before_coef * before_exp, before_exp - 1);
         }
-        cur = cur->link;
+        cur = cur->next;
     }
     return result;
 }
@@ -146,7 +146,7 @@ float calculate_polynomial(Polynomial *eq, float x) {
 
     while (cur != NULL) {
         result += cur->coef * powf(x, cur->exp);
-        cur = cur->link;
+        cur = cur->next;
     }
     return result;
 }

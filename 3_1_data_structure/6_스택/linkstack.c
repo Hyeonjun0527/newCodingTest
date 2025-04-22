@@ -4,7 +4,7 @@
 typedef int element;
 typedef struct StackNode {
     element data;
-    struct StackNode *link;
+    struct StackNode *next;
 } StackNode;
 // 스택의관리구조체
 typedef struct {
@@ -24,7 +24,7 @@ void free_stack(LinkedStackType *s) {
     StackNode *temp;
     while (s->top != NULL) {
         temp = s->top;
-        s->top = s->top->link;
+        s->top = s->top->next;
         free(temp);
     }
     free(s);
@@ -44,7 +44,7 @@ int get_size(LinkedStackType *s) {
 
 // 순회및프린트함수
 void print_stack(LinkedStackType *s) {
-    for (StackNode *p = s->top; p->link != NULL; p = p->link)
+    for (StackNode *p = s->top; p->next != NULL; p = p->next)
         printf("%d->", p->data);
     printf("%d //", p->data);
     printf("NULL \n");
@@ -63,7 +63,7 @@ void push(LinkedStackType *s, element item) {
         // (1) create node
         (StackNode *)malloc(sizeof(StackNode));
     temp->data = item;
-    temp->link = s->top; // (2) push node
+    temp->next = s->top; // (2) push node
     s->top = temp;       // (3) move top
     s->size++;
 }
@@ -74,8 +74,8 @@ element pop(LinkedStackType *s) {
         fprintf(stderr, "Stack isEmpty\n");
         exit(1);
     } else {
-        StackNode *temp = s->top;  // (1) copy link
-        s->top = s->top->link;     // (2) move top
+        StackNode *temp = s->top;  // (1) copy next
+        s->top = s->top->next;     // (2) move top
         element data = temp->data; // (3) backup data
         free(temp);                // (3) free memory
         s->size++;
