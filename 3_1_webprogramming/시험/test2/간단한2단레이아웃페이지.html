@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .container {
+                max-width: 960px;
+                margin: 0 auto;
+            }
+
+            .row {
+                overflow: auto;
+            }
+
+            aside {
+                float: left;
+                width: 25%;
+                box-sizing: border-box;
+                background: #f4f4f4;
+                padding: 16px;
+            }
+
+            main {
+                float: left;
+                box-sizing: border-box;
+                width: 75%;
+                background: #fff;
+                padding: 16px;
+            }
+
+            header,
+            footer {
+                height: 60px;
+                background: #333;
+                color: #fff;
+                text-align: center;
+                line-height: 60px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>헤더</header>
+            <div class="row">
+                <aside>사이드바</aside>
+                <main>메인 콘텐츠</main>
+            </div>
+            <footer>푸터</footer>
+        </div>
+    </body>
+</html>

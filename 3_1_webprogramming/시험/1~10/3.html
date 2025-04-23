@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <!-- 
+    3. 인라인 <span>에 width·height를 주면 무시된다
+    -->
+    <head>
+        <meta charset="UTF-8">
+        <title>인라인 span 크기 무시</title>
+        <style>
+            span.inline {
+                display: inline;
+                width: 100px;
+                height: 50px;
+                background: #acf;
+            }
+
+            span.inline-block {
+                display: inline-block;
+                width: 100px;
+                height: 50px;
+                background: #fac;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            <span class="inline">인라인 (무시됨)</span>
+            <span class="inline-block">인라인-블록 (적용됨)</span>
+        </p>
+    </body>
+</html>

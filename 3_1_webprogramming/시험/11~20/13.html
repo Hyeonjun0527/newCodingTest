@@ -1,0 +1,23 @@
+<!-- 13. CSS 커스텀 프로퍼티 예시 -->
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>Custom Property 예시</title>
+        <style>
+            :root {
+                --main-color: #3498db;
+                --gap: 16px;
+            }
+
+            .theme-box {
+                background-color: var(--main-color);
+                padding: var(--gap);
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="theme-box">CSS 변수(커스텀 프로퍼티) 사용</div>
+    </body>
+</html>

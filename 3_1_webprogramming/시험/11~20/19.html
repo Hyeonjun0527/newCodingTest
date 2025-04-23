@@ -1,0 +1,47 @@
+<!-- 19. z-index & 스태킹 컨텍스트 예시 -->
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>Stacking Context 예시</title>
+        <style>
+            .parent {
+                position: relative;
+                z-index: 1;
+                background: rgba(255, 0, 0, 0.3);
+                padding: 20px;
+            }
+
+            .child {
+                position: relative;
+                z-index: 2;
+                background: rgba(0, 255, 0, 0.3);
+                width: 100px;
+                height: 100px;
+            }
+
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 150px;
+                height: 150px;
+                background: rgba(0, 0, 0, 0.3);
+                z-index: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="parent">
+            Parent (z-index:1)
+            <div class="overlay">Overlay (z-index:0)</div>
+            <div class="child">Child (z-index:2)</div>
+        </div>
+    </body>
+</html>
+
+<!-- 
+Tip: 부모와 자식 모두 position+z‑index를 사용해 스택을 만들면,
+“부모 배경”은 항상 자식보다 뒤에,
+“자식들끼리”만 z‑index 순서로 겹친다고 기억하세요.
+-->

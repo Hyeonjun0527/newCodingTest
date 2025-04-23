@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <!-- 1. div의 기본 너비 (100%) -->
+    <head>
+        <meta charset="UTF-8">
+        <title>div 기본 너비</title>
+        <style>
+            .container {
+                width: 600px;
+                background: #eee;
+                padding: 10px;
+            }
+
+            .box {
+                background: #cfc;
+                border: 1px solid #080;
+                /* width 속성 미지정 */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="box">
+                width를 지정하지 않은 이 div는 기본적으로 부모(.container) 너비의 100%를 차지합니다.
+            </div>
+        </div>
+    </body>
+</html>

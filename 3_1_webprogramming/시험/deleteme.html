@@ -1,47 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CSS Property Basic</title>
     <style>
-      .profile-card {
-        width: 300px;
-        padding: 20px;
-        background-color: #fafafa;
-        border: 1px solid #ddd;
-        border-radius: 8px;
+      .css_test {
+        background-image: url("img6.jpg");
+        background-position: 0% 0%;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        border: 1px solid black;
+        display: inline-block;
+        font-weight: bold;
+        height: 400px;
+        line-height: 150px !important;
+        overflow: auto;
         text-align: center;
-        transition: box-shadow 0.3s ease;
+        width: 30%;
       }
 
-      .profile-card:hover {
-        box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
+      .css_test span {
+        background: #fff;
+        border-radius: 5px;
+        padding: 15px;
       }
 
-      .profile-img {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-        border-radius: 50%;
-      }
-
-      .profile-name {
-        margin: 12px 0 4px;
-        font-size: 1.5em;
-      }
-
-      .profile-desc {
-        color: #555;
-        font-size: 0.9em;
+      h1 {
+        padding-top: 100px;
+        padding-bottom: 50px;
       }
     </style>
   </head>
   <body>
-    <section class="profile-card">
-      <img src="profile.jpg" alt="프로필사진" class="profile-img" />
-      <h2 class="profile-name">홍길동</h2>
-      <p class="profile-desc">웹개발자 &amp; UI/UX 디자이너</p>
-    </section>
+    <h1>각각의 스크롤바를 움직여 보세요. 그리고 화면도 스크롤해 보세요.</h1>
+    <center>
+      <div class="css_test" style="background-attachment:scroll;">
+        <span>scroll</span><br>
+        <span>웹 프로그래밍</span><br>
+        <span>scroll</span><br>
+        <span>웹 프로그래밍</span><br>
+        <span>scroll</span><br>
+      </div>
+      <div class="css_test" style="background-attachment:fixed;">
+        <span>fixed</span><br>
+        <span>웹 프로그래밍</span><br>
+        <span>fixed</span><br>
+        <span>웹 프로그래밍</span><br>
+        <span>fixed</span><br>
+      </div>
+      <div class="css_test" style="background-attachment:local;">
+        <span>local</span><br>
+        <span>웹 프로그래밍</span><br>
+        <span>local</span><br>
+        <span>웹 프로그래밍</span><br>
+        <span>local</span><br>
+      </div>
+    </center>
   </body>
 </html>

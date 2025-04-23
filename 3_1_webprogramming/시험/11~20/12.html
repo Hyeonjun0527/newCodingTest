@@ -1,0 +1,63 @@
+<!-- 12. position 종류 예시 -->
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>Position 예시</title>
+        <style>
+            .wrap {
+                position: relative;
+                height: 200px;
+                background: #f0f0f0;
+            }
+
+            .static {
+                position: static;
+                background: #ffc;
+            }
+
+            .relative {
+                position: relative;
+                top: 10px;
+                left: 10px;
+                background: #cfc;
+            }
+
+            .absolute {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background: #ccf;
+            }
+
+            .fixed {
+                position: fixed;
+                bottom: 10px;
+                left: 10px;
+                background: #fcc;
+            }
+
+            .sticky {
+                position: sticky;
+                top: 0;
+                background: #fcf;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <p class="static">static 요소</p>
+            <p class="relative">relative 요소 (원래 자리 남김)</p>
+            <p class="absolute">absolute 요소 (부모 기준)</p>
+            <p class="sticky">sticky 요소 (스크롤 시 상단 고정)</p>
+        </div>
+        <script>
+            // fixed 요소를 body 바로 아래에 배치
+            const fixed = document.createElement('p');
+            fixed.className = 'fixed';
+            fixed.textContent = 'fixed 요소 (뷰포트 기준)';
+            document.body.appendChild(fixed);
+        </script>
+        <div style="height:1000px;"></div>
+    </body>
+</html>

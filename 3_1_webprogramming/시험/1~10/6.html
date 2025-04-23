@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>마진 병합 예시</title>
+        <style>
+            .A {
+                margin-bottom: 30px;
+                background: #def;
+                padding: 10px;
+            }
+
+            .B {
+                margin-top: 20px;
+                background: #fed;
+                padding: 10px;
+            }
+
+            .parent {
+                /* border: none; padding: 0; */
+            }
+
+            .child {
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 인접한 블록 형제 요소간 마진병합발생 -->
+        <div class="A">A (margin-bottom:30px)</div>
+        <div class="B">B (margin-top:20px)</div>
+        <!-- 실제 사이 간격은 max(30,20)=30px -->
+        <!-- 자식때문에 부모도 마진 탑 생김 -->
+        <div class="parent">
+            <div class="child">첫 자식</div>
+        </div>
+    </body>
+</html>

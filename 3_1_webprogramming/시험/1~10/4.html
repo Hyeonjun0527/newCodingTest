@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>인라인 이미지 너비</title>
+        <style>
+            .wrapper {
+                width: 300px;
+                border: 1px solid #999;
+            }
+
+            .inline-img {
+                display: inline;
+                width: 100%;
+            }
+
+            .block-img {
+                display: block;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <img class="inline-img" src="img1.jpg" alt="고양이 (inline)">
+            <img class="block-img" src="img2.jpg" alt="고양이 (block)">
+            <img class="inline-img" src="img1.jpg" alt="고양이 (inline)">
+        </div>
+    </body>
+</html>

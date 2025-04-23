@@ -1,0 +1,36 @@
+<!-- 18. vw/vh vs % 예시 -->
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>단위 비교</title>
+        <style>
+            .percent {
+                width: 50%;
+                background: #ace;
+            }
+
+            .vw {
+                width: 50vw;
+                background: #eac;
+            }
+
+            .vh {
+                height: 50vh;
+                background: #cea;
+            }
+
+            .container {
+                width: 400px;
+                border: 1px solid #333;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="percent">width:50% (200px)</div>
+        </div>
+        <div class="vw">width:50vw (브라우저 너비의 절반)</div>
+        <div class="vh">height:50vh (브라우저 높이의 절반)</div>
+    </body>
+</html>

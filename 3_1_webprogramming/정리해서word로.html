@@ -14,6 +14,30 @@
             /* active : 클릭시, hover:마우슬올림,
             checked:체크된input,:focus포커스된거enabled가능한거
             :first-child,:last-child,:nth-child(even,odd,2n+1,2) */
+            .box {
+                border: 3px solid black;
+                box-shadow: 10px 10px 30px black;
+                text-shadow: 5px 5px 5px black;
+            }
+
+            .back {
+                background-image: url('img6.jpg');
+                /* background-position: bottom left; */
+                background-position: 0% 30%;
+                /* background-size: 100%; */
+                background-repeat: no-repeat;
+                background-attachment: scroll;
+                /* background-attachment: fixed;
+                background-attachment: local; */
+                background-color: #E7E7E8;
+            }
+
+            /* 
+            font-size:xxx-large;
+            font-family:fantasy;font-family:italic;
+            font-family:bold;line-height:70px;
+            text-align:center;
+            */
         </style>
     </head>
     <body>
@@ -28,7 +52,7 @@
         </video>
         <div id="block">블럭</div>
         <div id="block">블럭</div>
-        <ul>
+        <ul class="back">
             <li>과일
                 <ul>
                     <li>사과</li>
@@ -42,5 +66,8 @@
                 </ol>
             </li>
         </ul>
+        <div class="box">
+            <h1>lorem dolor amet ipsum</h1>
+        </div>
     </body>
 </html>

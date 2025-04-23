@@ -1,0 +1,30 @@
+<!-- 11. CSS 단축(shorthand) 속성 예시 -->
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>Shorthand 예시</title>
+        <style>
+            /* 개별 속성 */
+            .box-full {
+                margin-top: 20px;
+                margin-right: 40px;
+                margin-bottom: 20px;
+                margin-left: 40px;
+                padding: 10px;
+                border: 1px solid #333;
+            }
+
+            /* shorthand */
+            .box-short {
+                margin: 20px 40px;
+                padding: 10px;
+                border: 1px solid #333;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box-full">개별 속성 사용</div>
+        <div class="box-short">Shorthand 사용</div>
+    </body>
+</html>

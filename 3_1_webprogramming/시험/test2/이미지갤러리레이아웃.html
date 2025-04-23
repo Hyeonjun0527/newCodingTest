@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            /* style.css */
+            .gallery {
+                max-width: 960px;
+                margin: 0 auto;
+            }
+
+            .gallery figure {
+                width: 30%;
+                margin: 1.5%;
+                float: left;
+                text-align: center;
+            }
+
+            .gallery img {
+                width: 100%;
+                display: block;
+            }
+
+            .gallery figcaption {
+                margin-top: 8px;
+                font-size: 0.9em;
+                color: #444;
+            }
+
+            .gallery::after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="gallery">
+            <figure>
+                <img src="img1.jpg" alt="이미지1">
+                <figcaption>캡션 1</figcaption>
+            </figure>
+            <figure>
+                <img src="img2.jpg" alt="이미지2">
+                <figure>캡션 2</figure>
+            </figure>
+            <figure>
+                <img src="img3.jpg" alt="이미지2">
+                <figure>캡션 3</figure>
+            </figure>
+            <figure>
+                <img src="img4.jpg" alt="이미지2">
+                <figure>캡션 4</figure>
+            </figure>
+            <figure>
+                <img src="img5.jpg" alt="이미지2">
+                <figure>캡션 5</figure>
+            </figure>
+            <figure>
+                <img src="img6.jpg" alt="이미지2">
+                <figure>캡션 6</figure>
+            </figure>
+        </div>
+    </body>
+</html>

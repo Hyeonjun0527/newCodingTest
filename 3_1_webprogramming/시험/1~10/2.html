@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <!-- 2. .gallery figure에 margin: 1.5%인 이유 -->
+    <head>
+        <meta charset="UTF-8">
+        <title>갤러리 레이아웃</title>
+        <style>
+            .gallery {
+                overflow: hidden;
+                /* 부모 높이 유지 */
+            }
+
+            .gallery figure {
+                width: 30%;
+                margin: 1.5%;
+                /* 좌우 합 3% × 3개 = 9% + 3×30% = 99% (거의 100%) */
+                float: left;
+                background: #def;
+                text-align: center;
+                padding: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="gallery">
+            <figure>1</figure>
+            <figure>2</figure>
+            <figure>3</figure>
+        </div>
+    </body>
+</html>
