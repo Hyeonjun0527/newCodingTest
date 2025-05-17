@@ -4,28 +4,28 @@
 typedef int element;
 typedef struct ListNode {
     element data;
-    struct ListNode *next;
+    struct ListNode *next_node;
 } ListNode;
 
-ListNode *create_node(element data, ListNode *next) {
+ListNode *create_node(element data, ListNode *next_node) {
     ListNode *new_node = (ListNode *)malloc(sizeof(ListNode));
     if (new_node == NULL) {
         printf("메모리 할당 오류\n");
         exit(1);
     }
     new_node->data = data;
-    new_node->next = next;
+    new_node->next_node = next_node;
     return new_node;
 }
 
 element find(element data, ListNode *node) {
     ListNode *p;
     element k = 0;
-    while (node->next != NULL) {
+    while (node->next_node != NULL) {
         if (node->data == data) {
             return node->data;
         }
-        node = node->next;
+        node = node->next_node;
     }
     return 0;
 }
@@ -44,7 +44,7 @@ int main(void) {
             head = new_node;
             cur = head;
         } else {
-            cur->next = new_node;
+            cur->next_node = new_node;
             cur = new_node;
         }
     }
@@ -61,7 +61,7 @@ int main(void) {
     cur = head;
     while (cur != NULL) {
         printf("%d -> ", cur->data);
-        cur = cur->next;
+        cur = cur->next_node;
     }
     printf("NULL\n");
 
@@ -69,7 +69,7 @@ int main(void) {
     cur = head;
     while (cur != NULL) {
         ListNode *temp = cur;
-        cur = cur->next;
+        cur = cur->next_node;
         free(temp);
     }
 

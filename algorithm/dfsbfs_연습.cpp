@@ -1,12 +1,15 @@
-#include <iostream>
-#include <vector>
-#include <queue>
 #include <algorithm>
+#include <iostream>
+#include <queue>
+#include <vector>
 using namespace std;
+
 vector<vector<int>> adj_list;
 vector<bool> visited;
+
 void dfs(int v) {
-    if (visited[v]) return;
+    if (visited[v])
+        return;
     visited[v] = true;
     cout << v << " ";
     for (int nv : adj_list[v]) {
@@ -17,19 +20,20 @@ void bfs(int v) {
     queue<int> q;
     q.push(v);
     visited[v] = true;
-    while (!q.empty())
-    {
-        int cv = q.front(); q.pop();
+    while (!q.empty()) {
+        int cv = q.front();
+        q.pop();
         cout << cv << " ";
         for (int nv : adj_list[cv]) {
-            if (visited[nv]) continue;
+            if (visited[nv])
+                continue;
             visited[nv] = true;
             q.push(nv);
         }
     }
 }
 int main() {
-    int v,e,s;
+    int v, e, s;
     cin >> v >> e >> s;
     adj_list.resize(v + 1);
     visited.resize(v + 1, false);

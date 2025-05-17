@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Document Object Model</title>
+        <script>
+            window.onload = function () {
+                const value = document.querySelector('#test');
+                console.log(value.textContent);
+                console.log(value.innerText);
+                console.log(value.innerHTML);
+            };
+        </script>
+    </head>
+    <body>
+        <div id='test'>
+            This element is <strong>strong</strong> and has some super fun <code>code</code>!
+        </div>
+    </body>
+</html>

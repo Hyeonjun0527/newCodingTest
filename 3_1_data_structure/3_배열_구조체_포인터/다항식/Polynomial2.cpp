@@ -89,7 +89,7 @@ int get_terms_size(int* array, int degree) {
 
 // 다항식 덧셈 함수
 Polynomial* poly_add(Polynomial* A, Polynomial* B) {
-    int array[MAX_DEGREE + 1] = { 0 };
+    int array[MAX_DEGREE + 1] = { 0 };//array는 항의 계수(4x^2에서 4)
 
     check_terms(A, array);
     check_terms(B, array);//전체 항의 개수를 얻어 C를 만들기 위함

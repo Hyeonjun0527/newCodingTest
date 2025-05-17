@@ -103,6 +103,8 @@ void infixToPostfix(const char *expr, char *result) {
             while (!isEmpty(&opStack) &&
                    precedence(top(&opStack)) >= precedence(c) &&
                    top(&opStack) != '(') {
+                // top(&opStack) != '('가 있으면 break;해야함
+                //'('가 잇으면
                 result[j++] = pop(&opStack);
             }
             // 그리고 현재 연산자를 push
@@ -134,7 +136,7 @@ int main(void) {
         return 1;
     }
 
-        // '\n' 제거
+    // '\n' 제거
     expr[strcspn(expr, "\n")] = '\0';
 
     infixToPostfix(expr, postfix);

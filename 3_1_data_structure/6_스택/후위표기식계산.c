@@ -7,7 +7,7 @@
 typedef int element;
 typedef struct StackNode {
     element data;
-    struct StackNode *next;
+    struct StackNode *next_node;
 } StackNode;
 
 // 스택 관리 구조체
@@ -29,7 +29,7 @@ void free_stack(LinkedStackType *s) {
     StackNode *temp;
     while (s->top != NULL) {
         temp = s->top;
-        s->top = s->top->next;
+        s->top = s->top->next_node;
         free(temp);
     }
     free(s);
@@ -44,7 +44,7 @@ int is_empty(LinkedStackType *s) {
 void push(LinkedStackType *s, element item) {
     StackNode *temp = (StackNode *)malloc(sizeof(StackNode));
     temp->data = item;
-    temp->next = s->top;
+    temp->next_node = s->top;
     s->top = temp;
     s->size++;
 }
@@ -57,7 +57,7 @@ element pop(LinkedStackType *s) {
     }
     StackNode *temp = s->top;
     element data = temp->data;
-    s->top = s->top->next;
+    s->top = s->top->next_node;
     free(temp);
     s->size--;
     return data;

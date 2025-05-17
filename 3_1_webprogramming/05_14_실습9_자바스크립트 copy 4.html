@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM Basic</title>
+        <script>
+            window.onload = function () {
+                var output = '';
+                for (var i = 0; i < 5; i++) output += '<p> <b> ' + i + ' </b> </p>';
+                document.getElementById('textContent').textContent = output;
+                document.getElementById('innerText').innerText = output;
+                document.getElementById('innerHTML').innerHTML = output;
+            };
+        </script>
+    </head>
+    <body>
+        <div id='textContent'></div>
+        <div id='innerText'></div>
+        <div id='innerHTML'></div>
+    </body>
+</html>

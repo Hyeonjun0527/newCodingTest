@@ -5,7 +5,7 @@
 typedef int element; // 항목의 정의
 typedef struct {     // 리스트 노드 정의
     element data;
-    struct ListNode *next;
+    struct ListNode *next_node;
 } ListNode;
 
 typedef struct {
@@ -19,10 +19,10 @@ typedef struct {
 */
 
 // 신규 노드 생성
-ListNode *create_node(element value, ListNode *next) {
+ListNode *create_node(element value, ListNode *next_node) {
     ListNode *p = (ListNode *)malloc(sizeof(ListNode));
     p->data = value;
-    p->next = next;
+    p->next_node = next_node;
     return p;
 }
 
@@ -40,7 +40,7 @@ void clear(CircularListType *L) {
     ListNode *temp;
     while (cur != NULL) {
         temp = cur;
-        cur = cur->next;
+        cur = cur->next_node;
         free(temp);
     }
     L->head = NULL;
@@ -51,10 +51,10 @@ void clear(CircularListType *L) {
 void print_list(CircularListType *L) {
     printf("CircularList(%d) [", L->size);
     if (L->head != NULL) {
-        ListNode *cur = L->head->next;
+        ListNode *cur = L->head->next_node;
         while (cur != L->head) {
             printf("%d, ", cur->data);
-            cur = cur->next;
+            cur = cur->next_node;
         }
         printf("%d", cur->data);
     }
@@ -83,38 +83,38 @@ element get_entry(CircularListType *L, int pos) {
     if (pos < 0 || pos >= L->size)
         error("Wrong position");
     // pos위치까지이동
-    ListNode *cur = L->head->next;
+    ListNode *cur = L->head->next_node;
     for (int i = 0; i < pos; i++)
-        cur = cur->next;
+        cur = cur->next_node;
     return cur->data;
 }
 
 void insert_front(CircularListType *L, element value) {
     if (L->head == NULL) {
         L->head = create_node(value, NULL);
-        L->head->next = L->head; // 순환링크생성
+        L->head->next_node = L->head; // 순환링크생성
     } else {
         /*
         L->head->next를 next로 가지고 있는 노드를 만들어.
         그 노드를, L->head의 next로 넣어줘?
         */
-        L->head->next = create_node(value, L->head->next);
+        L->head->next_node = create_node(value, L->head->next_node);
     }
     L->size++; // 리스트크기증가
 }
 void insert_last(CircularListType *L, element value) {
     if (L->head == NULL) {
         L->head = create_node(value, NULL);
-        L->head->next = L->head; // 순환링크생성
+        L->head->next_node = L->head; // 순환링크생성
     } else {
-        L->head->next = create_node(value, L->head->next);
+        L->head->next_node = create_node(value, L->head->next_node);
         // 순환링크에맞게마지막항목을head로설정
-        L->head = L->head->next;
+        L->head = L->head->next_node;
     }
     L->size++; // 리스트크기증가
 }
 
-// 노드 prev 뒤에 새로운 노드 삽입
+// 노드 prev_node 뒤에 새로운 노드 삽입
 void insert(CircularListType *L, int pos, element value) {
     if (pos < 0 || pos >= L->size) { // 위치값 오류 확인
         printf("Wrong position\n");
@@ -128,11 +128,11 @@ void insert(CircularListType *L, int pos, element value) {
         (pos == L->size - 1)
             // 끝에 추가하는 경우
             insert_last(L, value)
-    }; else {                     // 중간에 삽입하는 경우
-        ListNode *prev = L->head; // prev 위치검색
+    }; else {                          // 중간에 삽입하는 경우
+        ListNode *prev_node = L->head; // prev_node 위치검색
         for (int i = 0; i < pos; i++)
-            prev = prev->next;
-        prev->next = create_node(value, prev->next);
+            prev_node = prev_node->next_node;
+        prev_node->next_node = create_node(value, prev_node->next_node);
         L->size++; // 리스트 크기 증가
     }
 }
@@ -145,8 +145,8 @@ void remove_front(CircularListType *L) {
         free(L->head);
         L->head = NULL;
     } else {
-        ListNode *remove = L->head->next;
-        L->head->next = remove->next;
+        ListNode *remove = L->head->next_node;
+        L->head->next_node = remove->next_node;
         free(remove);
     }
     L->size--; // 리스트크기감소
@@ -161,12 +161,12 @@ void remove_last(CircularListType *L) {
     } else {
         ListNode *remove = L->head;
         // 헤드이전노드탐색
-        ListNode *prev = remove->next;
-        while (prev->next != L->head)
-            prev = prev->next;
+        ListNode *prev_node = remove->next_node;
+        while (prev_node->next_node != L->head)
+            prev_node = prev_node->next_node;
         // 노드삭제및링크정리
-        prev->next = remove->next; // 노드링크변경
-        L->head = prev;            // 헤드포인트변경
+        prev_node->next_node = remove->next_node; // 노드링크변경
+        L->head = prev_node;            // 헤드포인트변경
         free(remove);
     }
     L->size--; // 리스트크기감소
@@ -181,14 +181,14 @@ void remove(CircularListType *L, int pos) {
         remove_front(L);
     } else {
         // 삭제직전노드찾기
-        ListNode *prev = L->head;
+        ListNode *prev_node = L->head;
         for (int i = 0; i < pos; i++)
-            prev = prev->next;
+            prev_node = prev_node->next_node;
         // 노드삭제
-        ListNode *remove = prev->next; // 삭제대상
-        prev->next = remove->next;
+        ListNode *remove = prev_node->next_node; // 삭제대상
+        prev_node->next_node = remove->next_node;
         if (remove == L->head)
-            L->head = prev;
+            L->head = prev_node;
         L->size--;    // 리스트크기감소
         free(remove); // 노드삭제
     }
@@ -200,10 +200,10 @@ int main() {
         insert_last(list, i);
         print_list(list);
     }
-    ListNode *cur = list->head->next;
+    ListNode *cur = list->head->next_node;
     for (int i = 0; i < 10; i++) {
         printf("현재차례=%d \n", cur->data);
-        cur = cur->next;
+        cur = cur->next_node;
     }
     return 0;
 }

@@ -4,13 +4,13 @@ using namespace std;
 typedef string element;
 struct Listnode {
     element data;
-    Listnode *next;
+    Listnode *next_node;
 };
 
-Listnode *create_node(element data, Listnode *next) {
+Listnode *create_node(element data, Listnode *next_node) {
     Listnode *new_node = new Listnode();
     new_node->data = data;
-    new_node->next = next;
+    new_node->next_node = next_node;
     return new_node;
 }
 // 순회
@@ -18,7 +18,7 @@ void my_print(Listnode *head) {
     Listnode *cur = head;
     while (cur != NULL) {
         cout << cur->data << "-> ";
-        cur = cur->next;
+        cur = cur->next_node;
     }
     cout << "NULL\n";
 }

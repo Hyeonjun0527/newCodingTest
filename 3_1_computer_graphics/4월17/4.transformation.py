@@ -59,7 +59,7 @@ if __name__ == '__main__':
          [ 0,  0, 1]]
     
     shear = \
-        [[1, .5, 0], 
+        [[1, 1.5, 0], 
          [0,  1, 0], 
          [0,  0, 1]]
 
@@ -69,8 +69,11 @@ if __name__ == '__main__':
     shear = np.array(shear)
     reflection = np.array(reflection)
 
-    draw_triangle(shear@rotation@triangle)
-    # draw_rectangle(r@refl@square)
+    # draw_triangle(triangle)
+    # draw_triangle(rotation@triangle)
+    draw_rectangle(square)
+    draw_rectangle(shear@square)
+
 
     plt.show()
 

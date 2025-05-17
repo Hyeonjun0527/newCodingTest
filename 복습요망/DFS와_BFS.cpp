@@ -24,7 +24,7 @@ void bfs(int v) {//vertex
         int cv = vq.front(); vq.pop();//current vertex;
         cout << cv << " ";
 
-        for (int nv : adj_list[cv]) { // nv : next(adj) vertex;
+        for (int nv : adj_list[cv]) { // nv : next_node(adj) vertex;
             if(visited[nv]) continue;
             visited[nv] = true;
             vq.push(nv);

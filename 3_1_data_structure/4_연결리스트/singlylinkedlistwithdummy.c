@@ -5,7 +5,7 @@
 typedef int element; // 항목의정의
 typedef struct {     // 리스트노드 정의
     element data;
-    struct ListNode *next;
+    struct ListNode *next_node;
 } ListNode;
 typedef struct {
     ListNode *head; // 리스트헤드포인터
@@ -24,9 +24,9 @@ void print_list(LinkedListType *L) {
     if (L->head != NULL) {
         // 전체리스트순회
         ListNode *cur = L->head;
-        while (cur->next != NULL) {
+        while (cur->next_node != NULL) {
             printf("%d, ", cur->data);
-            cur = cur->next;
+            cur = cur->next_node;
         }
         printf("%d", cur->data);
     }
@@ -56,7 +56,7 @@ element get_entry(LinkedListType *L, int pos) {
         error("Wrong position");
     ListNode *cur = L->head;
     for (int i = 0; i < pos; i++) {
-        cur = cur->next;
+        cur = cur->next_node;
     }
     return cur->data;
 }
@@ -68,17 +68,17 @@ element clear(LinkedListType *L) {
     ListNode *temp;
     while (cur != NULL) {
         temp = cur;
-        cur = cur->next;
+        cur = cur->next_node;
         free(temp);
     }
     L->head = NULL;
     L->size = 0;
     // free(L)하면 리스트 자체가 삭제되어버림.
 }
-ListNode *create_node(element value, ListNode *next) {
+ListNode *create_node(element value, ListNode *next_node) {
     ListNode *p = (ListNode *)malloc(sizeof(ListNode));
     p->data = value;
-    p->next = next;
+    p->next_node = next_node;
     return p;
 }
 void insert_front(LinkedListType *L, element value) {
@@ -93,11 +93,11 @@ void insert_last(LinkedListType *L, element value) {
         L->head = p;
     } else {
         ListNode *cur = L->head;
-        while (cur->next != NULL) {
-            cur = cur->next;
+        while (cur->next_node != NULL) {
+            cur = cur->next_node;
         }
-        // while문이 끝나면 cur->next == NULL이야. 그래서
-        cur->next = p;
+        // while문이 끝나면 cur->next_node == NULL이야. 그래서
+        cur->next_node = p;
     }
     L->size++;
 }
@@ -112,9 +112,9 @@ void insert(LinkedListType *L, int pos, element value) {
     } else {
         ListNode *cur = L->head;
         for (int i = 0; i < pos - 1; i++) {
-            cur = cur->next;
+            cur = cur->next_node;
         }
-        cur->next = create_node(value, cur->next);
+        cur->next_node = create_node(value, cur->next_node);
     }
     L->size++;
 }
@@ -126,22 +126,22 @@ void remove_front(LinkedListType *L) {
     // 저장하자 헤드 옮기고, 삭제해야되니까 미리 저장해놔.
     ListNode *cur = L->head;
 
-    L->head = cur->next;
+    L->head = cur->next_node;
     L->size--;
     free(cur);
 }
 void remove_last(LinkedListType *L) {
     ListNode *cur = L->head;
-    ListNode *prev;
+    ListNode *prev_node;
 
-    if (cur->next == NULL) {
+    if (cur->next_node == NULL) {
         L->head = NULL;
     } else {
-        while (cur->next != NULL) {
-            prev = cur;
-            cur = cur->next;
+        while (cur->next_node != NULL) {
+            prev_node = cur;
+            cur = cur->next_node;
         }
-        prev->next = NULL;
+        prev_node->next_node = NULL;
     }
     free(cur);
     L->size--;
@@ -151,12 +151,12 @@ void remove_(LinkedListType *L, int pos) {
     if (pos < 0 || pos >= L->size)
         return;
 
-    ListNode *prev = L->head;
+    ListNode *prev_node = L->head;
     for (int i = 0; i < pos - 1; i++) {
-        prev = prev->next;
+        prev_node = prev_node->next_node;
     }
-    ListNode *removed = prev->next;
-    prev->next = removed->next;
+    ListNode *removed = prev_node->next_node;
+    prev_node->next_node = removed->next_node;
     L->size--;
     free(removed);
 }

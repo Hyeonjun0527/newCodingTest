@@ -46,11 +46,13 @@ bool extend_data(StackType *s) {
     return true;
 }
 // 삽입함수
-void push(StackType *s, elementitem) {
+void push(StackType *s, element item) {
     if (is_full(s)) {
         fprintf(stderr, "Stackis Full\n");
         return;
     } else {
+        // 맨위인덱스가 버퍼의 마지막 칸과 같다면
+        //==해도 논리적으론 같게 작동
         if (s->top >= s->capacity - 1)
             extend_data(s);
         s->data[++(s->top)] = item;

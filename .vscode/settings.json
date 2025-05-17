@@ -95,7 +95,8 @@
     "typeindex": "cpp",
     "valarray": "cpp",
     "stdlib.h": "c",
-    "괄호검사.C": "cpp"
+    "괄호검사.C": "cpp",
+    "TREE1.C": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

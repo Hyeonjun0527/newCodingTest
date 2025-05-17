@@ -2,16 +2,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct DListNode {
+typedef struct Node {
     char title[100];
-    struct DListNode *prev;
-    struct DListNode *next;
-} DListNode;
+    struct Node *prev_node;
+    struct Node *next_node;
+} Node;
 
 typedef struct PlayList {
-    struct DListNode *head;
-    struct DListNode *tail;
-    struct DListNode *current;
+    struct Node *head;
+    struct Node *tail;
+    struct Node *current;
     int size;
 } PlayList;
 
@@ -23,47 +23,39 @@ PlayList *create_playlist() {
 }
 
 void add_song(PlayList *pl, char *title) {
-    DListNode *new_node = (DListNode *)malloc(sizeof(DListNode));
+    Node *new_node = (Node *)malloc(sizeof(Node));
     strcpy(new_node->title, title);
-    new_node->next = NULL;
+    new_node->next_node = NULL;
 
     if (!pl->head) {
         pl->head = new_node;
         pl->current = new_node;
     } else {
-        pl->tail->next = new_node;
-        new_node->prev = pl->tail;
+        pl->tail->next_node = new_node;
+        new_node->prev_node = pl->tail;
     }
     pl->tail = new_node;
     pl->size++;
 }
 
-//
-void add_song(PlayList *pl, char *title) {
-    DListNode *new_node = (DListNode *)malloc(sizeof(DListNode));
-    strcpy(new_node->title, title);
-    new_node->next = NULL;
-    new_node->prev = pl->tail;
-}
-
 void move_next(PlayList *pl) {
-    if (pl->current && pl->current->next)
-        pl->current = pl->current->next;
+    if (pl->current && pl->current->next_node)
+        pl->current = pl->current->next_node;
 };
 void move_prev(PlayList *pl) {
-    if (pl->current && pl->current->prev)
-        pl->current = pl->current->prev;
+    if (pl->current && pl->current->prev_node)
+        pl->current = pl->current->prev_node;
 };
 
 void print_playlist(PlayList *pl) {
     printf("PlayList(%d) [\n", pl->size);
-    DListNode *cur = pl->head;
+    Node *cur = pl->head;
     while (cur) {
         if (cur == pl->current)
             printf(" * %s,\n", cur->title); // 실행중인거 읽음
         else
             printf("   %s,\n", cur->title); // 실행중아닌거 읽음
-        cur = cur->next;
+        cur = cur->next_node;
     }
     printf("]\n");
 }

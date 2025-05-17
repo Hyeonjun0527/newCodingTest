@@ -1,0 +1,24 @@
+<main class="battle-screen">
+    <header>
+        <button onclick="history.back()">← 돌아가기</button>
+        <h1>🏆 수면 대결 <small>(3 vs 3)</small></h1>
+    </header>
+
+    <!-- 매칭 스테이트 -->
+    <section id="queue-state">
+        <p id="status">대기열에 참가하지 않았습니다.</p>
+        <button id="join-queue">랜덤 매칭 참가</button>
+        <button id="leave-queue" hidden>대기 취소</button>
+    </section>
+
+    <!-- 팀 미리보기 (매칭 완료 시 표시) -->
+    <section id="teams" hidden>
+        <h2>팀 편성</h2>
+        <div class="teams">
+            <ul id="teamA" class="team-list"></ul>
+            <span class="vs">VS</span>
+            <ul id="teamB" class="team-list"></ul>
+        </div>
+        <button id="ready-btn">대결 시작!</button>
+    </section>
+</main>

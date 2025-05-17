@@ -1,0 +1,38 @@
+<!-- index.html : 펫 화면 -->
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Sleepy Pet</title>
+    </head>
+    <body>
+        <main class="pet-screen">
+            <h1 class="title">Sleepy Pet</h1>
+
+            <!-- 중앙 펫 -->
+            <section id="pet-card">
+                <img src="pets/level1.png" alt="내 펫" />
+                <p id="pet-info">레벨 1 · 숙면 0회</p>
+            </section>
+
+            <!-- 밥/놀이 버튼 -->
+            <div class="actions">
+                <button id="feed-btn" disabled>🍚 밥주기</button>
+                <button id="play-btn" disabled>🪀 놀아주기</button>
+            </div>
+
+            <!-- ★ 대결하러가기 ★ -->
+            <button id="battle-btn" class="battle-link">
+                🏆 대결하러 가기
+            </button>
+        </main>
+
+        <!-- 간단한 라우팅: 다른 HTML로 이동 -->
+        <script>
+            document.getElementById('battle-btn').onclick = () =>
+                location.href = 'battle.html';
+        </script>
+    </body>
+</html>

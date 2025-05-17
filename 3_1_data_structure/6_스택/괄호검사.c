@@ -8,7 +8,7 @@
 // 여는 괄호 스택을 직접 배열로 구현
 typedef struct {
     char data[MAX_LEN];
-    int top;
+    int top;//인덱스야
 } CharStack;
 
 void initStack(CharStack *st) {
@@ -92,7 +92,7 @@ bool isBalanced(const char *str) {
         }
     }
 
-    // 모든 괄호가 스택에서 정상적으로 pop되었다면 균형
+    // 모든 괄호가 스택에서 정상적으로 pop되었다면 균형(=성공)
     return isEmpty(&s);
 }
 
