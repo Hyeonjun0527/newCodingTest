@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Traditional Event</title>
+        <script>
+            window.onload = function () {
+                var button = document.getElementById('button');
+                function event_hadller() { alert("표준 이벤트 모델"); }
+                document.getElementById('button1').addEventListener('click', function () {
+                    button.addEventListener('click', event_hadller);
+                });
+                document.getElementById('button2').addEventListener('click', function () {
+                    button.removeEventListener('click', event_hadller);
+                });
+            };
+        </script>
+    </head>
+    <body>
+        <button id="button">버튼</button>
+        <button id="button1">버튼1</button>
+        <button id="button2">버튼2</button>
+    </body>
+</html>

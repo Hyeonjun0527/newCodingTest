@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery Basic</title>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('img').attr('alt', 'jQuery 라이브러리를 사용한 속성 지정');
+                $('img').attr('src', function (index) { //console.log(index)
+                    var size = (index + 1) * 100;
+                    return 'http://placehold.it/' + size + 'x100';
+                }
+                );
+            });
+        </script>
+    </head>
+    <body>
+        <img>
+        <img>
+        <img>
+    </body>
+</html>

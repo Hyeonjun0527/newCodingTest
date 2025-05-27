@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Event Basic</title>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('a').click(function (event) {
+                    alert('click');      // 기본 이벤트 제거
+                    event.preventDefault();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <a href="http://hanb.co.kr">Hanbit Academy</a>
+    </body>
+</html>

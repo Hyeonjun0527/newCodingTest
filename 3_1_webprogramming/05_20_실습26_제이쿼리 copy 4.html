@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery Basic</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script>
+      $(document).ready(function () {
+        var output = '';
+        // 검정색 백그라운드 만듬
+        for (var i = 0; i < 256; i++)
+          output += '<div></div>';
+        document.body.innerHTML = output; $('div').css({
+          height: 2,
+          backgroundColor: function (i) {
+            return 'rgb(' + i + ',' + i + ',' + i + ')';
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

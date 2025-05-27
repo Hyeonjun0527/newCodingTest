@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery Basic</title>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script>
+            $(document).ready(function () {
+                var src = $('img').attr('src');
+                $('body').append(src);
+            });
+        </script>
+    </head>
+    <body>
+        <img src="http://placehold.it/100x100">
+        <img src="http://placehold.it/200x100">
+        <img src="http://placehold.it/300x100">
+    </body>
+</html>

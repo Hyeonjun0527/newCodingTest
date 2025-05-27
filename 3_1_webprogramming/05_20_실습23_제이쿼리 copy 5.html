@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery Basic</title>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.box').each(function (index, item) {
+                    console.log($(item).css('color'))
+                    console.log($(item).css('float'))
+                });
+            });
+        </script>
+        <style>
+            .box {
+                float: left;
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box" style="color:red;">red</div>
+        <div class="box" style="color:green;">gree</div>
+        <div class="box" style="color:blue;">blue</div>
+    </body>
+</html>

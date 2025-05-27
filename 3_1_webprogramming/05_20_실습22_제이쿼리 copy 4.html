@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery Basic</title>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script>
+            $(document).ready(function () {
+                console.log($('.box').css('background-color'))
+                console.log($('.box').css('backgroundColor'))
+            });
+        </script>
+        <style>
+            .box {
+                color: red;
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">red</div>
+    </body>
+</html>

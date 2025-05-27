@@ -1,0 +1,1 @@
+{"name":"Local: yeon2","url":"c:\\newCodingTest\\3_1_webprogramming\\yeon2.c","tests":[{"id":1747737435603,"input":"123+23-42","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\newCodingTest\\3_1_webprogramming\\yeon2.c","group":"local","local":true}
